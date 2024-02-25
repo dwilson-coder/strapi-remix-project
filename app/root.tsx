@@ -20,15 +20,13 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
 
-// This was throwing the error. I had to destructure contacts
 export async function loader() {
-  // export const loader = async () => {
   const contacts = await getContacts();
-  return json({ contacts });
+  return json(contacts);
 }
 
 export default function App() {
-  const { contacts } = useLoaderData<typeof loader>();
+  const contacts = useLoaderData<typeof loader>();
 
   return (
     <html lang="en">
